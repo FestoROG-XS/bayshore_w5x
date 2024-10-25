@@ -1,0 +1,14 @@
+{
+    "shopName": "China 003 Gamecenter 003",
+    "shopNickname": "China#003#Gamecenter#003",
+    "regionName": "Guangdong",
+    "serverIp": "127.0.0.1",
+    "placeId": "CHN012034",
+    "country": "CHN",
+    "regionId": 10,
+    "reqHeadersShow": false,
+    "enableDebugLog": false,
+    "revisionLimit": 20817,
+
+    "teamShutdown": 0
+}

@@ -1,0 +1,175 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRES_URL")
+}
+
+model placeEntry {
+    dbId         Int    @id @default(autoincrement())
+    placeId      String
+    shopName     String
+    shopNickName String
+    regionId     Int
+    regionName   String
+    country      String @default("CHN")
+
+    // Net Auth
+    DriveUnitDongle    String @unique
+    TerminalUnitDongle String @unique
+    ALLNetID           String @unique
+    UserId             Int?   @unique
+}
+
+model User {
+    userId            Int     @id @default(autoincrement())
+    chipId            String
+    accessCode        String
+    maxiGold          Int     @default(0)
+    totalMaxiGold     Int     @default(0)
+    tutorials         Int[]   @default([])
+    teamId            Int?
+    teamStickerFont   Int?
+    hp600Count        Int     @default(0)
+    membership        Int?    @default(0)
+    totalVsStarCount  Int?    @default(0)
+    totalVsMedalPoint Int?    @default(0)
+    userBanned        Boolean @default(false)
+    carOrder          Int[]   @default([])
+}
+
+model Car {
+    carId  Int @id @default(autoincrement())
+    userId Int
+
+    regionId     Int
+    name         String
+    manufacturer Int
+    model        Int
+    visualModel  Int
+    defaultColor Int
+    customColor  Int    @default(0)
+    wheel        Int    @default(0)
+    wheelColor   Int    @default(0)
+    aero         Int    @default(0)
+    bonnet       Int    @default(0)
+    wing         Int    @default(0)
+
+    // gtWing Setting
+    pillar         Int @default(0)
+    pillarMaterial Int @default(0)
+    mainWing       Int @default(0)
+    mainWingColor  Int @default(0)
+    wingTip        Int @default(0)
+    material       Int @default(0)
+
+    mirror       Int @default(0)
+    sticker      Int @default(0)
+    stickerColor Int @default(0)
+
+    // miniStickers Setting
+    miniSticker      Int[] @default([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    miniStickerColor Int[] @default([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+    sideSticker         Int     @default(0)
+    sideStickerColor    Int     @default(0)
+    roofSticker         Int     @default(0)
+    roofStickerColor    Int     @default(0)
+    neon                Int     @default(0)
+    trunk               Int     @default(0)
+    plate               Int     @default(0)
+    plateColor          Int     @default(0)
+    plateNumber         Int     @default(0)
+    specialSticker      Int     @default(0)
+    specialStickerColor Int     @default(0)
+    tunePower           Int     @default(0)
+    tuneHandling        Int     @default(0)
+    title               String  @default("Wangan Beginner")
+    level               Int     @default(0)
+    teamSticker         Boolean @default(false)
+    // Team System Impl
+    teamDecoration      Int?
+    teamDecorationColor Int?
+    rivalMarker         Int?
+    rivalMarkerColor    Int?
+    lastPlayedAt        Int?
+    aura                Int?    @default(0)
+    auraMotif           Int?    @default(0)
+    ghostLevel          Int?    @default(1)
+    country             String  @default("CHN")
+
+    tuningPoint       Int     @default(0)
+    shopPoint         Int     @default(0)
+    shopGrade         Int     @default(0)
+    odometer          Int     @default(0)
+    playCount         Int     @default(0)
+    earnedCustomColor Boolean @default(false)
+    totalMaxiGold     Int     @default(0)
+
+    //setting Car Setting
+    view                Boolean @default(false)
+    transmission        Boolean
+    retire              Boolean @default(false)
+    meter               Int     @default(0)
+    navigationMap       Boolean @default(false)
+    volume              Int     @default(0)
+    bgm                 Int     @default(2)
+    nameplate           Int     @default(0)
+    nameplateColor      Int     @default(0)
+    nameplateFrame      Int     @default(0)
+    nameplateFrameColor Int     @default(0)
+    terminalBackground  Int     @default(0)
+
+    bgmPlaylist          Int[]   @default([])
+    vsPlayCount          Int     @default(0)
+    vsBurstCount         Int     @default(0)
+    vsStarCount          Int     @default(0)
+    vsStarCountMax       Int     @default(0)
+    vsCoolOrWild         Int     @default(0)
+    vsSmoothOrRough      Int     @default(0)
+    vsTripleStarMedals   Int     @default(0)
+    vsDoubleStarMedals   Int     @default(0)
+    vsSingleStarMedals   Int     @default(0)
+    vsPlainMedals        Int     @default(0)
+    rgPlayCount          Int     @default(0)
+    rgWinCount           Int     @default(0)
+    maxiCoin             Int     @default(0)
+    rgBlock              Int     @default(0)
+    rgProgress           Int[]   @default([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    rgClearCount         Int     @default(0)
+    rgConsecutiveLosses  Int     @default(0)
+    rgPastClearRegions   Int     @default(0)
+    rgCharacterEffect    Int     @default(0)
+    rgMotionEffect       Int     @default(0)
+    rgStamp              Int     @default(0)
+    stPlayCount          Int     @default(0)
+    stClearBits          Int     @default(0)
+    stClearDivCount      Int     @default(0)
+    stClearCount         Int     @default(0)
+    stLoseBits           BigInt  @default(0)
+    stLose               Boolean @default(false)
+    stConsecutiveWins    Int     @default(0)
+    stConsecutiveWinsMax Int     @default(0)
+    auraMotifAutoChange  Boolean @default(true)
+
+    // specialAuraMotif 
+    specialAuraMotif            Int @default(0)
+    specialAuraMotifMedalPoints Int @default(0)
+
+    screenshotCount        Int      @default(0)
+    announceEventModePrize Boolean? @default(false)
+}
+
+model Shop {
+    dbId Int @id @default(autoincrement())
+
+    category      Int
+    itemId        Int
+    price         Int
+    discountPrice Int?
+    recommended   Boolean @default(false)
+    saleUntil     Int?
+    shopGrade     Int
+}
