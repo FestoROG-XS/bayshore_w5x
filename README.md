@@ -18,17 +18,16 @@
 
 大部分都没做 慢慢写......
 
-
 终端机: 不可用 (还没写)
 
-## 命名规范
+## **部分变量命名规律(?)**
 
 Shop Nick Name: 机修界面中网络测试所显示的店铺名
 
 Shop Name: 化身界面显示的店铺名
 
-ALL.NET ID: AB-XX-X-XXXXXX （AB,地区,地区序号,加密狗号）
+ALL.NET ID: AB-XX-X-XXXXXX （AB,地区,地区序号,加密狗号，不用带横杠）
 
-Dongle: XXXXXX-XXXXXX
+Dongle: XXXXXX-XXXXXX（不用带横杠）
 
 Place ID: 湾岸终端机内的NBLINE路由上方贴纸，大陆地区为CHN0XXXXX
