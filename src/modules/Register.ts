@@ -148,5 +148,23 @@ export default class RegisterModule extends Module {
                     .send(Buffer.from(resp.finish()));
         });
 
+        app.post('/method/ping', async(req,res) => {
+
+            let resp = helper.PingResponse.encode({
+                error: eCode.ERR_SUCCESS,
+                pong: Date.now(),
+                bnidServerAvailable: true,
+                banacoinAvailable: true
+            });
+                res.header('Server', 'V388 Server')
+                    .header('Cache-Control', 'no-cache')
+                    .header('Keep-Alive', '300')
+                    .header('Content-Type', 'application/x-protobuf; revision=3225')
+                    .header('Content-Length', resp.finish().length.toString())
+                    .status(200)
+                    .send(Buffer.from(resp.finish()));
+
+        })
+
     }
 }

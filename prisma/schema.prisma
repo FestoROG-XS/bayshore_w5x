@@ -173,3 +173,21 @@ model Shop {
     saleUntil     Int?
     shopGrade     Int
 }
+
+model UserItem {
+    dbId Int @id @default(autoincrement())
+
+    userId     Int
+    category   Int
+    itemId     Int
+    userItemId Int
+    earnedAt   Int?
+}
+
+model MaxiGoldRewards {
+    dbId Int @id @default(autoincrement())
+
+    userId     Int
+    incomeType Int @default(1)
+    amount     Int
+}

@@ -107,7 +107,8 @@ export default class CarOperationModule extends Module {
                     }
                 })
 
-                await updateCarOrder(SBWJPermission!.UserId!,car!.carId);
+                // Logic Fix: Should be placed in SaveGameResult, or when terminal loading car, it will override the sequence
+                //await updateCarOrder(SBWJPermission!.UserId!,car!.carId);
 
                 let basicCar = await getCar(reqContent.carId, SBWJPermission!.ALLNetID);
 
