@@ -65,7 +65,7 @@ export default class ShopModule extends Module {
 
             } catch (ex:any) {
                 exceptionLog(ex);
-                res.status(500).send('NBGI Services Error');
+                res.status(503).send('NBGI Services Error');
             }
 
 

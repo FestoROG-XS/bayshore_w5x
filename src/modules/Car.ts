@@ -77,7 +77,7 @@ export default class CarOperationModule extends Module {
 
             } catch (ex:any) {
                 exceptionLog(ex,req);
-                res.status(500).send('NBGI Services Error');
+                res.status(503).send('NBGI Services Error');
             }
 
         });
@@ -145,7 +145,7 @@ export default class CarOperationModule extends Module {
 
             }catch (ex:any) {
                 exceptionLog(ex,req);
-                res.status(500).send('NBGI Services Error');
+                res.status(503).send('NBGI Services Error');
             }
 
         })

@@ -81,9 +81,17 @@ export default class TerminalModule extends Module {
                     freeScratched: false
                 })
 
+                res.header('Server', 'V388 Server')
+                            .header('Cache-Control', 'no-cache')
+                            .header('Keep-Alive', '300')
+                            .header('Content-Type', 'application/x-protobuf; revision=3225')
+                            .header('Content-Length', resp.finish().length.toString())
+                            .status(200)
+                            .send(Buffer.from(resp.finish()));
+
             } catch(ex:any) {
                 exceptionLog(`${ex}\nIf User = NULL or UNDEFINDED, maybe the problem of OpenBanapass, please re-swipe the card`,req);
-                res.status(500).send('NBGI Services Error');
+                res.status(503).send('NBGI Services Error');
             }
 
         })

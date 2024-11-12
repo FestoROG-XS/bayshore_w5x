@@ -166,7 +166,7 @@ export default class LoginModule extends Module {
 
             } catch(ex:any) {
                 exceptionLog(`${ex}\nIf User = NULL or UNDEFINDED, maybe the problem of OpenBanapass, please re-swipe the card`,req);
-                res.status(500).send('NBGI Services Error');
+                res.status(503).send('NBGI Services Error');
             }
 
         })
@@ -193,7 +193,7 @@ export default class LoginModule extends Module {
 
             }catch (ex:any) {
                 exceptionLog(ex,req);
-                res.status(500).send('NBGI Services Error');
+                res.status(503).send('NBGI Services Error');
             }
 
         })

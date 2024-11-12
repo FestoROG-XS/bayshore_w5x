@@ -191,3 +191,12 @@ model MaxiGoldRewards {
     incomeType Int @default(1)
     amount     Int
 }
+
+model Team {
+    teamId              Int    @id @default(autoincrement())
+    teamName            String
+    teamStickerFont     Int    @default(0)
+    teamDecoration      Int    @default(0)
+    teamDecorationColor Int    @default(0)
+    timestamp           Int
+}
